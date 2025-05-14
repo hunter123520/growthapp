@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:growth/providers/theme_provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -11,14 +12,31 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isDarkMode = false;
   bool notificationsEnabled = true;
   String appVersion = "1.0.0";
+  late SharedPreferences _prefs;
+  String? _selectedLanguage;
 
   @override
   void initState() {
     super.initState();
+    _loadSettings();
     _loadAppVersion();
+  }
+
+  Future<void> _loadSettings() async {
+    _prefs = await SharedPreferences.getInstance();
+    setState(() {
+      notificationsEnabled = _prefs.getBool('notificationsEnabled') ?? true;
+      _selectedLanguage = _prefs.getString('language');
+    });
+  }
+
+  Future<void> _saveNotificationsEnabled(bool value) async {
+    setState(() {
+      notificationsEnabled = value;
+    });
+    await _prefs.setBool('notificationsEnabled', value);
   }
 
   Future<void> _loadAppVersion() async {
@@ -28,8 +46,12 @@ class _SettingsPageState extends State<SettingsPage> {
     });
   }
 
-  void _changeLanguage(Locale locale) {
+  Future<void> _changeLanguage(Locale locale) async {
+    await _prefs.setString('language', locale.languageCode);
     context.setLocale(locale);
+    setState(() {
+      _selectedLanguage = locale.languageCode;
+    });
   }
 
   void _sendFeedback() async {
@@ -41,90 +63,125 @@ class _SettingsPageState extends State<SettingsPage> {
     if (await canLaunchUrl(emailLaunchUri)) {
       await launchUrl(emailLaunchUri);
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Could not open email app")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Could not open email app".tr())));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('settings'.tr())),
-      body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        children: [
-          // Language Section
-          _buildSectionTitle('language'.tr()),
-          ListTile(
-            title: Text('english'.tr()),
-            leading: Icon(Icons.language),
-            onTap: () => _changeLanguage(Locale('en')),
+    return Stack(
+      children: [
+        // Background gradient
+        Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFe6f4ea), Color(0xFFcdeac0)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-          ListTile(
-            title: Text('french'.tr()),
-            leading: Icon(Icons.language),
-            onTap: () => _changeLanguage(Locale('fr')),
-          ),
-          ListTile(
-            title: Text('arabic'.tr()),
-            leading: Icon(Icons.language),
-            onTap: () => _changeLanguage(Locale('ar')),
-          ),
+        ),
 
-          Divider(),
-
-          // Theme Switch
-          _buildSectionTitle('Theme'),
-          SwitchListTile(
-            title: Text("Dark Mode"),
-            value: context.watch<ThemeProvider>().isDarkMode,
-            secondary: Icon(Icons.brightness_6),
-            onChanged: (value) {
-              context.read<ThemeProvider>().toggleTheme(value);
-            },
+        // Decorative leaves
+        Positioned(
+          top: 0,
+          left: 0,
+          child: Image.asset('assets/images/leaf_top_left.png', width: 100),
+        ),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Image.asset(
+            'assets/images/leaf_bottom_right.png',
+            width: 130,
           ),
+        ),
 
-          // Notifications Toggle
-          _buildSectionTitle('Notifications'),
-          SwitchListTile(
-            title: Text("Plant Care Tips"),
-            value: notificationsEnabled,
-            secondary: Icon(Icons.notifications_active),
-            onChanged: (value) {
-              setState(() {
-                notificationsEnabled = value;
-              });
-              // Save to shared preferences if needed
-            },
+        // Main content
+        SafeArea(
+          child: Column(
+            children: [
+              // Custom app bar replacement
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                child: Row(
+                  children: [
+                    Text(
+                      'Settings'.tr(),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    const Spacer(),
+                    const Icon(Icons.settings, color: Colors.green),
+                  ],
+                ),
+              ),
+
+              // Settings body
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  children: [
+                    // Language Section
+                    _buildSectionTitle('language'.tr()),
+                    _buildLanguageTile('english'.tr(), 'en', Icons.language),
+                    _buildLanguageTile('french'.tr(), 'fr', Icons.language),
+                    _buildLanguageTile('arabic'.tr(), 'ar', Icons.language),
+
+                    Divider(),
+
+                    // Theme Switch
+                    _buildSectionTitle('Theme'.tr()),
+                    SwitchListTile(
+                      title: Text("Dark Mode".tr()),
+                      value: context.watch<ThemeProvider>().isDarkMode,
+                      secondary: Icon(Icons.brightness_6),
+                      onChanged: (value) {
+                        context.read<ThemeProvider>().toggleTheme(value);
+                      },
+                    ),
+
+                    // Notifications Toggle
+                    _buildSectionTitle('Notifications'.tr()),
+                    SwitchListTile(
+                      title: Text("Plant Care Tips".tr()),
+                      value: notificationsEnabled,
+                      secondary: Icon(Icons.notifications_active),
+                      onChanged: _saveNotificationsEnabled,
+                    ),
+
+                    Divider(),
+
+                    // About App
+                    _buildSectionTitle('About growth'.tr()),
+                    ListTile(
+                      title: Text('Version'.tr()),
+                      subtitle: Text(appVersion),
+                      leading: Icon(Icons.info_outline),
+                    ),
+                    ListTile(
+                      title: Text('Developer'.tr()),
+                      subtitle: Text('Salami Mohamed'),
+                      leading: Icon(Icons.person),
+                    ),
+
+                    Divider(),
+
+                    // Feedback / Contact
+                    _buildSectionTitle('Feedback'.tr()),
+                    ListTile(
+                      title: Text('Contact Us'.tr()),
+                      leading: Icon(Icons.mail_outline),
+                      onTap: _sendFeedback,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-
-          Divider(),
-
-          // About App
-          _buildSectionTitle('About growth'),
-          ListTile(
-            title: Text('Version'),
-            subtitle: Text(appVersion),
-            leading: Icon(Icons.info_outline),
-          ),
-          ListTile(
-            title: Text('Developer'),
-            subtitle: Text('Salami Mohamed'),
-            leading: Icon(Icons.person),
-          ),
-
-          Divider(),
-
-          // Feedback / Contact
-          _buildSectionTitle('Feedback'),
-          ListTile(
-            title: Text('Contact Us'),
-            leading: Icon(Icons.mail_outline),
-            onTap: _sendFeedback,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -139,6 +196,17 @@ class _SettingsPageState extends State<SettingsPage> {
           color: Colors.grey[700],
         ),
       ),
+    );
+  }
+
+  Widget _buildLanguageTile(String title, String languageCode, IconData icon) {
+    return ListTile(
+      title: Text(title),
+      leading: Icon(icon),
+      trailing: _selectedLanguage == languageCode
+          ? Icon(Icons.check, color: Colors.green)
+          : null,
+      onTap: () => _changeLanguage(Locale(languageCode)),
     );
   }
 }

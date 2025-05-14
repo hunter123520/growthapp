@@ -1,12 +1,46 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:growth/Pages/detection_page.dart';
+import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  Future<void> triggerAutomation(BuildContext context) async {
+      final url = Uri.parse("https://lipw097y.rpcld.com/webhook/2ae06564-81dc-4046-9dc8-8d830c87aac0");
 
+      try {
+        final response = await http.get(url);
+
+        if (response.statusCode == 200) {
+          // Show success dialog
+          showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+              title: const Text('Success'),
+              content: const Text('Automation Completed Successfully'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          );
+        } else {
+          // Handle non-200 responses
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Request failed with status: ${response.statusCode}')),
+          );
+        }
+      } catch (e) {
+        // Handle error
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
+    }
   @override
   Widget build(BuildContext context) {
     void _launchURL(String url) async {
@@ -18,15 +52,15 @@ class HomePage extends StatelessWidget {
 }
 final List<Map<String, String>> news = [
   {
-    'title': '14 states threatened by locust invasion',
+    'title': '14 states threatened by locust invasion'.tr(),
     'link': 'https://www.facebook.com/share/p/1KukdLZ6KB/',
   },
   {
-    'title': 'Plant Exhibition of the City of Blida',
+    'title': 'Plant Exhibition of the City of Blida'.tr(),
     'link': 'https://www.facebook.com/share/p/1GroDN2jbT/',
   },
   {
-    'title': 'Algerian President Abdelmadjid Tebboune inaugurated 3 major seawater desalination plants out of 5 in 3 state',
+    'title': 'Algerian President Abdelmadjid Tebboune inaugurated 3 major seawater desalination plants out of 5 in 3 state'.tr(),
     'link': 'https://www.facebook.com/share/p/1GHkTMbkKT/',
   },
   
@@ -35,20 +69,20 @@ final List<Map<String, String>> news = [
     final features = [
       {
         'icon': Icons.science,
-        'title': 'Detect Disease',
+        'title': 'Detect Disease'.tr(),
         'bg': Color(0xFFB2DFDB),
       },
       {
         'icon': Icons.bar_chart,
-        'title': 'View Reports',
+        'title': 'View Reports'.tr(),
         'bg': Color(0xFFBBDEFB),
       },
       {
         'icon': Icons.info_outline,
-        'title': 'How It Works',
+        'title': 'How It Works'.tr(),
         'bg': Color(0xFFFFF9C4),
       },
-      {'icon': Icons.eco, 'title': 'Live Stats', 'bg': Color(0xFFDCE775)},
+      {'icon': Icons.eco, 'title': 'Live Automation'.tr(), 'bg': Color(0xFFDCE775)},
     ];
 
     return Scaffold(
@@ -87,7 +121,7 @@ final List<Map<String, String>> news = [
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                  Text(
-                  "🌿 Leaf Doctor".tr(),
+                  "Leaf Doctor".tr(),
                   style: TextStyle(
                     fontSize: 26,
                     fontWeight: FontWeight.bold,
@@ -163,6 +197,8 @@ final List<Map<String, String>> news = [
 
                         if (title == 'Detect Disease') {
                           Navigator.push(context, MaterialPageRoute(builder: (_) => DetectionPage()));
+                        }else if(title == "Live Automation"){
+                          triggerAutomation(context);
                         } else {
                           // You can handle other feature navigation here
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -280,6 +316,7 @@ final List<Map<String, String>> news = [
             bottom: 10,
             left: 10,
             child: Opacity(
+            
               opacity: 0.9,
               child: Image.asset('assets/images/logo/logo.png', width: 50),
             ),

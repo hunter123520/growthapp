@@ -18,14 +18,6 @@ class DiseaseInfo {
 
 final List<DiseaseInfo> infos = [
   DiseaseInfo(
-    title: "Apple Scab",
-    whatIs: "Apple scab, a prevalent fungal disease...",
-    causes: "The development and spread of apple scab...",
-    effects: "The impact of apple scab on apple trees...",
-    treatment: "Effective management of apple scab relies...",
-    prevention: "Preventing apple scab involves a proactive approach...",
-  ),
-  DiseaseInfo(
             title: "Apple Scab",
             whatIs: "Apple scab, a prevalent fungal disease incited by the pathogen *Venturia inaequalis*, poses a significant threat to apple orchards worldwide. This disease manifests itself through the development of characteristic dark, often described as velvety or sooty, spots on both the leaves and the developing fruit of apple trees. The infection on leaves can lead to premature leaf drop, weakening the tree and reducing its photosynthetic capacity, which is crucial for overall health and future fruit production. When the fungus infects the fruit, it results in unsightly blemishes that significantly diminish the marketability and aesthetic appeal of the apples. In severe cases, early infection of young fruit can even lead to malformation and stunted growth. The cumulative effect of leaf damage and fruit blemish can drastically reduce both the quantity and the quality of the apple harvest, leading to substantial economic losses for apple growers.",
             causes: "The development and spread of apple scab are strongly influenced by environmental conditions, particularly cool and wet weather, which are most commonly experienced during the spring season when new growth is emerging. The fungal pathogen, *Venturia inaequalis*, has an ingenious overwintering strategy, residing within fallen apple leaves that remain on the orchard floor from the previous growing season. As spring arrives and moisture levels increase, these overwintering structures mature and release microscopic spores, known as ascospores, into the air. These airborne spores are then readily dispersed by wind and rain splash to infect newly developing leaves, blossoms, and young fruit. Subsequent infections during the growing season are caused by conidia, which are secondary spores produced on the initial lesions. The cycle of infection and spore production continues as long as favorable cool and wet conditions persist, making early spring management critical for controlling this disease.",
@@ -345,7 +337,6 @@ final List<DiseaseInfo> infos = [
             treatment: "Managing bacterial spot in peach and nectarine trees often involves a combination of cultural practices and the timely application of copper-based bactericides. Copper-based products are typically applied during early leaf development in the spring to protect new growth. Additional applications may be necessary during periods of warm, wet weather when disease pressure is high, following label recommendations for timing and rates. However, copper can be phytotoxic to peach foliage under certain conditions, so careful adherence to label instructions is essential. Managing nitrogen levels in the orchard is also important, as excessive nitrogen can promote succulent growth that is more susceptible to bacterial spot. Pruning practices that promote good air circulation within the tree canopy can help leaves dry more quickly, reducing the duration of wetness favorable for bacterial infection. While there are no curative chemical treatments for bacterial spot, these management strategies can help to reduce disease severity and protect developing foliage and fruit. It is important to note that the effectiveness of copper sprays can be limited, and integrated approaches are necessary for successful management.",
             prevention: "Preventing bacterial spot in peach and nectarine orchards relies on a multifaceted approach that emphasizes cultural practices and the selection of less susceptible cultivars. Planting resistant cultivars is one of the most effective long-term strategies for managing bacterial spot, as some varieties exhibit significantly less susceptibility to the disease. Avoiding overhead watering can help to reduce leaf wetness and limit the spread of the bacteria via splashing water. Pruning trees to promote good air circulation within the canopy facilitates faster drying of leaves and fruit, creating less favorable conditions for bacterial infection. Proper orchard sanitation, including the removal and destruction of infected twigs and leaves during pruning, can help to reduce the overwintering inoculum. Careful attention to irrigation and fertilization practices to avoid excessive vegetative growth can also be beneficial. While chemical protectants like copper can play a role, relying primarily on preventative cultural practices and resistant varieties is often the most sustainable and effective approach to minimizing the impact of bacterial spot in peach and nectarine production."
 ),
-  // Add more DiseaseInfo objects...
 ];
 
 // final List<String> diseaseClassNames = [
@@ -428,6 +419,130 @@ final List<String> diseaseClassNames = [
   'Tomato - Target Spot',
   'Tomato - Tomato mosaic virus',
   'Tomato - Tomato Yellow Leaf Curl Virus',
+];
+
+final List<DiseaseInfo> Palminfos = [
+DiseaseInfo(
+  title: "Scale Insect",
+  whatIs: "Scale insects are small, sap-sucking pests that attach themselves to the leaves, stems, and fruits of palm trees. These pests appear as tiny, dome-shaped bumps and often go unnoticed until an infestation becomes severe. They feed by piercing the plant tissue and drawing out its sap, weakening the palm over time. Infested areas may become sticky due to honeydew excretion, which also promotes the growth of sooty mold.",
+  causes: "Scale insect infestations typically result from poor air circulation, high humidity, and the absence of natural predators. Over-fertilization can also lead to excessive soft growth, which attracts these pests. Transporting infected plants without proper inspection can spread scale insects to new areas. Lack of routine inspection and delayed treatment allows these pests to multiply rapidly.",
+  effects: "Heavy infestations cause yellowing and wilting of fronds, reduced plant vigor, and stunted growth. The sticky honeydew secreted by the insects invites fungal growth, which blocks sunlight and hinders photosynthesis. Long-term neglect can lead to severe decline or even the death of the palm.",
+  treatment: "Initial treatment includes physically removing the insects with a soft cloth or sponge and pruning heavily infested fronds. Horticultural oils or insecticidal soaps can be sprayed to suffocate and kill the insects. Systemic insecticides may be used in severe infestations under expert supervision. Introducing natural predators like ladybugs can help control the population biologically.",
+  prevention: "Preventive measures include regular monitoring of palms, especially the undersides of leaves. Avoiding excessive nitrogen fertilization and ensuring proper spacing for air circulation reduce the risk. Quarantining new plants before introducing them to the garden helps prevent spread. Using neem oil as a preventive spray also deters infestations."
+),
+DiseaseInfo(
+  title: "Magnesium Deficiency",
+  whatIs: "Magnesium deficiency in palm trees manifests as yellowing along the margins of older leaves, with the center staying green – a condition often referred to as 'frizzle top'. It primarily affects palms growing in sandy or highly acidic soils, where magnesium is leached away by irrigation or rainwater.",
+  causes: "The deficiency is commonly caused by nutrient imbalance in the soil, particularly when high levels of potassium or calcium outcompete magnesium uptake. Excessive use of fertilizers without proper soil testing can exacerbate the problem. Poor soil structure and drainage issues also contribute to magnesium loss.",
+  effects: "Affected palms show yellowing and eventual browning of older fronds, which die prematurely. The deficiency reduces the tree’s ability to photosynthesize effectively, weakening overall plant health and reducing resistance to other diseases and pests. New growth may become stunted if the deficiency is prolonged.",
+  treatment: "Apply magnesium sulfate (Epsom salts) or a controlled-release palm fertilizer with a balanced micronutrient profile. Water the soil thoroughly after application to ensure proper absorption. Severely affected fronds should be removed only after new healthy growth appears.",
+  prevention: "Prevent magnesium deficiency by conducting regular soil tests and using fertilizers tailored for palms. Avoid over-fertilization with potassium-heavy formulas. Incorporate organic matter into sandy soils to improve nutrient retention. Monitor palms regularly to detect and address early signs of deficiency."
+),
+DiseaseInfo(
+  title: "Palm Healthy",
+  whatIs: "Healthy palm trees display vibrant green fronds that are upright and firm, without discoloration or spots. The trunk is sturdy and free from cracks or oozing, and new fronds emerge regularly from the crown. There is a consistent pattern of frond development and shedding, showing active and balanced growth.",
+  causes: "Optimal palm health is maintained by ensuring well-drained soil, adequate sunlight, and balanced watering. The use of palm-specific fertilizers based on soil testing provides necessary nutrients. Protection from strong winds, pests, and fungal infections also contributes to long-term vitality.",
+  effects: "Healthy palms contribute to the aesthetic and ecological value of landscapes. They are more resistant to pests and diseases, grow at a steady pace, and produce flowers and fruits seasonally as expected. Their strong structure reduces the risk of wind or drought damage.",
+  treatment: "To maintain palm health, continue using balanced fertilizers, monitor for early signs of stress or disease, and prune dead fronds carefully. Avoid damage to the crown or trunk. Support young palms with stakes if needed, especially in windy areas.",
+  prevention: "Prevention of health issues involves regular maintenance, proper spacing, and early intervention against pests or nutrient imbalances. Ensure the palm is planted at the correct depth and avoid mechanical injuries during landscaping. Mulch around the base to retain moisture and regulate soil temperature without piling against the trunk."
+),
+DiseaseInfo(
+  title: "Insect (Other)",
+  whatIs: "Apart from scale insects, palms can be affected by various other insects including caterpillars, mealybugs, aphids, and beetles. These pests feed on different parts of the palm such as leaves, stems, roots, and even flowers, depending on the species. Their presence can cause physical damage, introduce pathogens, or stress the plant, reducing its vigor and aesthetic value.",
+  causes: "These insects are attracted to palms under stress due to poor growing conditions, such as inadequate watering, over-fertilization, or mechanical injury. Crowded planting, lack of routine monitoring, and introduction of infested nursery stock are common sources of pest outbreaks.",
+  effects: "Infested palms may show holes or chew marks on leaves, curling or yellowing fronds, slowed growth, and general decline. Some insects produce honeydew that encourages mold growth, while others may act as vectors for plant viruses or fungal diseases.",
+  treatment: "Identify the specific insect to choose an appropriate treatment. Manual removal may be effective for larger pests like caterpillars. Insecticidal soap, neem oil, or selective insecticides can be used based on the pest involved. Encourage beneficial insects and avoid broad-spectrum insecticides that kill natural predators.",
+  prevention: "Routine inspections, especially on young palms, help in early detection. Keep palms healthy through balanced fertilization and proper irrigation. Quarantine new plants, clean tools regularly, and maintain good garden hygiene to limit pest introduction and spread."
+),
+DiseaseInfo(
+  title: "Brown Leaf Spots",
+  whatIs: "Brown leaf spots in palms are typically a sign of fungal or bacterial infection. These spots can vary in size and may appear as round or irregular lesions on the fronds, sometimes with yellow halos. Left untreated, they may coalesce and lead to premature leaf drop.",
+  causes: "Excessive moisture on leaves, poor air circulation, and overwatering create ideal conditions for fungal growth. Injuries to leaves from pruning or insect feeding can serve as entry points for pathogens. Warm and humid climates accelerate disease development.",
+  effects: "The affected palm may experience reduced photosynthetic capacity, slower growth, and diminished appearance. In severe cases, repeated infections weaken the plant over time and make it more vulnerable to secondary infections and environmental stress.",
+  treatment: "Remove and dispose of infected fronds carefully. Apply a suitable fungicide as recommended for the specific pathogen. Improve air circulation by pruning surrounding vegetation and avoid overhead watering to reduce leaf wetness. Disinfect tools after pruning.",
+  prevention: "Avoid excessive moisture on foliage, especially during the evening. Provide adequate spacing between palms to ensure airflow. Use disease-free planting material and monitor regularly for early symptoms. Maintain soil drainage and avoid over-fertilization which can encourage tender, susceptible growth."
+),
+DiseaseInfo(
+  title: "Manganese Deficiency",
+  whatIs: "Manganese deficiency is a common nutritional problem in palms, especially in alkaline or sandy soils. It is characterized by frizzle-top symptoms, where new leaves emerge with yellow streaks, interveinal chlorosis, and withered or necrotic tips. In severe cases, growth is stunted and death of the apical meristem can occur.",
+  causes: "High soil pH, poor manganese availability in the soil, and root damage or waterlogged conditions can all contribute to manganese deficiency. Over-application of fertilizers rich in iron or other micronutrients can interfere with manganese uptake.",
+  effects: "New fronds are typically the first to show symptoms, becoming deformed or showing tip necrosis. The deficiency hinders chlorophyll production and energy transfer, severely impairing palm development. Chronic deficiency may cause irreversible crown damage and death in young palms.",
+  treatment: "Apply manganese sulfate directly to the soil or as a foliar spray. In alkaline soils, foliar application is often more effective. Avoid excessive liming or high-pH fertilizers. Correct any drainage issues to enhance nutrient uptake.",
+  prevention: "Use slow-release fertilizers that include micronutrients, especially manganese, in balanced amounts. Regularly test soil and adjust pH if needed. Mulch with organic matter to enhance soil structure and nutrient availability. Monitor young palms closely for early symptoms."
+),
+DiseaseInfo(
+  title: "Bayoud Disease",
+  whatIs: "Bayoud disease is a devastating fungal disease that primarily affects date palms. It is caused by the soil-borne fungus *Fusarium oxysporum f. sp. albedinis*. The disease leads to the progressive wilting and death of the palm, starting with one side of the crown and gradually affecting the entire tree.",
+  causes: "The disease is spread through infected soil, irrigation water, and contaminated tools. It thrives in hot, arid regions and is particularly problematic in monoculture palm plantations where genetic diversity is low. It often enters through wounded roots.",
+  effects: "Initial symptoms include whitening and wilting of fronds on one side of the crown. As the disease progresses, more fronds become affected until the entire crown dies. Internally, the vascular tissue of the trunk shows brown discoloration. Once symptoms appear, the palm typically dies within months.",
+  treatment: "There is no curative treatment once a palm is infected. Removal and destruction of affected palms are necessary to prevent spread. Soil solarization and careful monitoring can help reduce risk. Some chemical soil treatments can slow fungal activity but do not eliminate the disease.",
+  prevention: "Use resistant palm varieties wherever possible. Avoid planting in infested soils. Practice good sanitation by disinfecting tools and not moving soil or plant material from infected areas. Implement strict quarantine protocols and diversify palm cultivars to reduce vulnerability."
+),
+DiseaseInfo(
+  title: "Fungal Disease",
+  whatIs: "Palms are susceptible to various fungal diseases, including bud rot, leaf spot, and Ganoderma butt rot. These diseases are caused by different fungal pathogens and often affect weakened or stressed palms. Symptoms vary based on the type of fungus and the part of the plant affected.",
+  causes: "Fungal diseases are often triggered by environmental stress, excessive moisture, poor drainage, and mechanical injury. Spores are spread via wind, water splash, contaminated tools, and infected plant debris.",
+  effects: "Symptoms include discolored or rotting tissue, soft or mushy crowns, leaf spots, trunk bleeding, and wilting. Severe infections can lead to structural instability and even death of the palm if not addressed promptly.",
+  treatment: "Treatments vary by disease but generally involve pruning and removing affected tissue, applying systemic or contact fungicides, and improving environmental conditions. Early diagnosis is crucial. For lethal fungi like *Ganoderma*, removal is the only option.",
+  prevention: "Ensure good drainage and avoid overwatering. Do not wound the trunk or roots unnecessarily. Disinfect pruning tools and remove dead organic matter regularly. Maintain palm vigor through proper fertilization and care to reduce susceptibility to infection."
+),
+DiseaseInfo(
+  title: "Nutrient Deficiency",
+  whatIs: "Palms require a balanced intake of nutrients to thrive. A deficiency in any essential nutrient—such as nitrogen, potassium, magnesium, manganese, or boron—can lead to poor growth, discoloration, deformities, and increased susceptibility to diseases and pests.",
+  causes: "Deficiencies are often due to poor soil composition, high pH levels, over-irrigation, or competition with nearby plants. Sandy soils and improper fertilization practices also contribute to nutrient imbalance.",
+  effects: "Symptoms include yellowing or browning of leaves (chlorosis or necrosis), frizzle top, stunted growth, and malformed fronds. Different deficiencies show specific patterns—e.g., nitrogen deficiency causes uniform yellowing, while magnesium deficiency affects older leaves first.",
+  treatment: "Accurate diagnosis via soil and tissue testing is key. Apply appropriate fertilizers based on the specific deficiency. Slow-release, palm-specific fertilizers that include micronutrients are typically effective. Foliar sprays can offer a quicker response for acute symptoms.",
+  prevention: "Maintain a regular fertilization schedule using balanced, palm-formulated fertilizers. Mulch to conserve moisture and improve soil structure. Monitor soil pH and drainage. Avoid over-watering or excessive fertilizer applications that can disrupt nutrient uptake."
+),
+DiseaseInfo(
+  title: "Rachis Blight",
+  whatIs: "Rachis blight is a disease that affects the rachis—the central stem of the palm frond—causing progressive tissue death along its length. It is generally fungal in origin and is more common in stressed or weakened palms.",
+  causes: "This condition is typically caused by fungal pathogens that invade through wounds or natural openings. High humidity, poor air circulation, and mechanical damage from pruning or wind can predispose palms to infection.",
+  effects: "Symptoms begin as dark, water-soaked lesions on the rachis, which expand and dry out, forming sunken, necrotic streaks. Affected fronds often wilt or droop and may fall prematurely. Over time, the disease can affect the crown if not managed.",
+  treatment: "Prune and dispose of infected fronds to limit spread. Apply appropriate fungicides to protect new growth. Ensure that the environment around the palm is dry and well-ventilated to inhibit fungal development.",
+  prevention: "Avoid injuring the rachis during maintenance. Ensure proper spacing between palms to improve air circulation. Apply fungicides preventively in areas prone to fungal issues. Use sterilized pruning tools to avoid cross-contamination."
+),
+DiseaseInfo(
+  title: "Honey Residue",
+  whatIs: "Honey residue refers to the sticky, sugary excretion known as honeydew, often found on palm leaves and stems. It is not a disease itself but a symptom of insect infestations such as scale insects, aphids, or mealybugs that feed on palm sap.",
+  causes: "The residue is secreted by sap-feeding insects as they digest plant fluids. Infestations occur due to environmental stress, lack of natural predators, or proximity to infested plants. Warm, humid climates promote their rapid reproduction.",
+  effects: "Leaves and stems become coated with sticky honeydew, which may lead to sooty mold development. This black fungal growth can inhibit photosynthesis and reduce the palm’s aesthetic value and health.",
+  treatment: "Control the underlying insect population using horticultural oils, insecticidal soaps, or systemic insecticides. Clean off honeydew with water to reduce mold growth. In severe cases, prune heavily infested fronds.",
+  prevention: "Monitor for early signs of insect activity. Encourage natural predators like ladybugs. Maintain healthy palm conditions through proper watering and fertilization. Avoid overuse of nitrogen fertilizers which can attract sap-feeding pests."
+),
+DiseaseInfo(
+  title: "Potassium Deficiency",
+  whatIs: "Potassium (K) is essential for palm health, aiding in water regulation, photosynthesis, and stress resistance. A deficiency can severely affect older fronds, reducing the palm's structural integrity and overall vigor.",
+  causes: "Common in sandy soils with high rainfall, potassium deficiency arises due to leaching, low soil reserves, or unbalanced fertilization. Excessive nitrogen and calcium can also interfere with potassium uptake.",
+  effects: "Symptoms appear on older fronds as yellow-orange discoloration, translucent spotting, and fraying along the leaf margins. Fronds eventually turn necrotic and may collapse. Prolonged deficiency can lead to trunk weakness and palm death.",
+  treatment: "Apply a potassium-rich fertilizer, ideally one formulated for palms with slow-release K and magnesium to prevent secondary deficiencies. Severely affected fronds should be removed only after nutrient levels are restored.",
+  prevention: "Use a balanced, slow-release fertilizer specifically designed for palms. Monitor soil nutrient levels regularly and adjust fertilization as needed. Avoid excess nitrogen applications, which exacerbate potassium deficiency."
+),
+DiseaseInfo(
+  title: "Apical Dying",
+  whatIs: "Apical dying refers to the death of the palm’s growing point, also known as the apical meristem or spear. Since palms grow from a single central bud, damage to this area can halt all new growth and ultimately kill the plant.",
+  causes: "Often caused by physical injury, severe nutrient deficiency, cold damage, or infection by lethal fungi or bacteria. Over-fertilization or improper pesticide use may also cause toxic reactions in the bud tissue.",
+  effects: "Initial signs include wilting or browning of the spear leaf, followed by its collapse. No new fronds emerge, and the palm crown appears stunted. Eventually, the entire palm may rot from the crown downwards.",
+  treatment: "Treatment is often ineffective once the spear is dead. However, early detection may allow for intervention using fungicides, micronutrient sprays, and protection from environmental stress. Severely affected palms usually need to be removed.",
+  prevention: "Protect the crown from cold, pests, and mechanical damage. Avoid over-fertilization and ensure balanced nutrition. Apply fungicides if rot is suspected. Choose cold-hardy varieties for susceptible areas and monitor palm health regularly."
+),
+
+];
+
+final List<String> PalmdiseaseClassNames = [
+  "Scale Insect",
+ "Magnesium Deficiency",
+ "Healthy",
+ "Insect (Other)",
+ "Brown Leaf Spots",
+ "Manganese Deficiency",
+ "Bayoud Disease",
+ "Fungal Disease",
+ "Nutrient Deficiency",
+ "Rachis Blight",
+ "Honey Residue",
+ "Potasium Deficiency",
+ "Apical Dying"
 ];
 
 

@@ -9,7 +9,8 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:growth/data/disease_data.dart';
 import 'package:image/image.dart' as img; // Add the image package
-
+import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:growth/Widgets/FeedBack.dart';
 class MultiDetectionPage extends StatefulWidget {
   @override
   _MultiDetectionPageState createState() => _MultiDetectionPageState();
@@ -82,12 +83,21 @@ Future<List<Map<String, dynamic>>> predictMultipleLeaves(XFile imageFile) async 
     // Convert the image to bytes
     Uint8List imageBytes = await imageFile.readAsBytes();
 
+    // Compress the image
+      Uint8List? compressedBytes = await FlutterImageCompress.compressWithList(
+        imageBytes,
+        minWidth: 800,      // Resize to a reasonable width
+        minHeight: 800,     // Resize to a reasonable height
+        quality: 70,        // Adjust quality (0 - worst, 100 - best)
+        format: CompressFormat.jpeg,
+      );
+
     // Create a POST request with the image file
     var request = http.MultipartRequest('POST', url);
     request.files.add(
       http.MultipartFile.fromBytes(
         'image',
-        imageBytes,
+        compressedBytes,
         filename: 'multi_leaf.jpg',
         contentType: MediaType('image', 'jpeg'),
       ),
@@ -156,7 +166,9 @@ Future<List<Map<String, dynamic>>> predictMultipleLeaves(XFile imageFile) async 
   }
 }
 
-
+ String TextTransform(String str){
+        return str.tr();
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +241,7 @@ Future<List<Map<String, dynamic>>> predictMultipleLeaves(XFile imageFile) async 
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                item['disease'],
+                                TextTransform(item['disease']),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -237,7 +249,7 @@ Future<List<Map<String, dynamic>>> predictMultipleLeaves(XFile imageFile) async 
                                 ),
                               ),
                               SizedBox(height: 8),
-                              Text("Confidence: ${(item['confidence'] * 100).toStringAsFixed(2)}%"),
+                              Text("Confidence:".tr()+" ${(item['confidence'] * 100).toStringAsFixed(2)}%"),
                             ],
                           ),
                         ),
@@ -246,6 +258,7 @@ Future<List<Map<String, dynamic>>> predictMultipleLeaves(XFile imageFile) async 
                   );
                 },
               ),
+              
           ],
         ),
       ),

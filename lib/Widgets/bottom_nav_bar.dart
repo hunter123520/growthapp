@@ -19,6 +19,7 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'.tr()),
         BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Detect'.tr()),
         BottomNavigationBarItem(icon: Icon(Icons.sensors_rounded), label: 'Sensors'.tr()),
+        BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Community'.tr()),
         BottomNavigationBarItem(icon: Icon(Icons.smart_toy_rounded), label: 'Assistant'.tr()),
         BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'.tr()),
       ],
